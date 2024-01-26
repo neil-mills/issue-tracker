@@ -20,5 +20,5 @@ export async function PATCH(request:NextRequest, {params}: { params: { id: strin
       description: body.description
     }
   })
-  return NextResponse.json(updatedIssue)
+return NextResponse.json(updatedIssue)
   }
