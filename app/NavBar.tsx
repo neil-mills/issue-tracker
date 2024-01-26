@@ -15,7 +15,7 @@ const NavBar = () => {
   
   const links:LinkType[] = [
     {label: 'Dashboard', href:'/'},
-    {label: 'Issues', href:'/issues'},
+    {label: 'Issues', href:'/issues/list'},
   ]
   const NavItem = (link:LinkType) => {
     const linkClass = classNames({
