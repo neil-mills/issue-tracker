@@ -1,2 +1,2 @@
-import { IssueFormSkeleton } from "@/app/components"
-export default IssueFormSkeleton
+import { IssueFormSkeleton } from '@/app/components';
+export default IssueFormSkeleton;
