@@ -4,7 +4,14 @@ import Spinner from './Spinner'
 import StatusBadge from './StatusBadge'
 import Skeleton from './Skeleton'
 import IssueFormSkeleton from './IssueFormSkeleton'
+import Pagination from './Pagination'
 
 export {
-  ErrorMessage, Link, Spinner, StatusBadge, Skeleton, IssueFormSkeleton
+  ErrorMessage,
+  Link,
+  Spinner,
+  StatusBadge,
+  Skeleton,
+  IssueFormSkeleton,
+  Pagination,
 }
