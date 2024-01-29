@@ -1,7 +1,14 @@
-import { Button, Flex } from '@radix-ui/themes'
-import Pagination from './components/Pagination'
-import { DoubleArrowLeftIcon } from '@radix-ui/react-icons'
+import { Pagination } from './components'
 
-export default function Home() {
-  return <Pagination itemCount={100} pageSize={10} currentPage={2} />
+interface Props {
+  searchParams: { page?: string }
+}
+export default function Home({ searchParams }: Props) {
+  return (
+    <Pagination
+      itemCount={100}
+      pageSize={10}
+      currentPage={searchParams?.page}
+    />
+  )
 }
