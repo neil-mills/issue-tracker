@@ -7,7 +7,6 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  console.log({ params })
   // const session = await getServerSession(authOptions)
   // if (!session) return NextResponse.json({}, { status: 401 })
   const body = await request.json()
@@ -16,7 +15,7 @@ export async function PATCH(
     return NextResponse.json(validation.error.format(), { status: 400 })
   }
   const { assignedToUserId, title, description } = body
-  if (assignedToUserId) {
+  if (assignedToUserId && assignedToUserId !== 'unassigned') {
     const user = await prisma?.user.findUnique({
       where: { id: assignedToUserId },
     })
