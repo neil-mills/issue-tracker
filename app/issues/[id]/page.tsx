@@ -6,6 +6,7 @@ import DeleteIssueButton from './DeleteIssueButton'
 import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/AuthOptions'
 import AssigneeSelect from './AssigneeSelect'
+import { prisma } from '@/prisma/client'
 
 interface Props {
   params: { id: string }
@@ -34,6 +35,20 @@ const IssueDetailPage = async ({ params }: Props) => {
       )}
     </Grid>
   )
+}
+
+export async function generateMetadata({ params }: Props) {
+  const issue = await prisma.issue.findUnique({
+    where: { id: parseInt(params.id) },
+  })
+  return {
+    title: issue?.title,
+    description: `Details fo issue ${issue.id}`,
+  }
+}
+export const metadata: Metadata = {
+  title: 'Issue Tracker - Issue List',
+  description: 'View all project issues',
 }
 
 export default IssueDetailPage
