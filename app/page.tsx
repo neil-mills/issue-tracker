@@ -1,3 +1,4 @@
+import IssueChart from './IssueChart'
 import IssueSummary from './IssueSummary'
 import LatestIssues from './LatestIssues'
 
@@ -11,6 +12,11 @@ export default async function Home() {
     <>
       <LatestIssues />
       <IssueSummary
+        open={open || 0}
+        inProgress={inProgress || 0}
+        closed={closed || 0}
+      />
+      <IssueChart
         open={open || 0}
         inProgress={inProgress || 0}
         closed={closed || 0}
