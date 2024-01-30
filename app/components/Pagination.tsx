@@ -11,7 +11,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 interface Props {
   itemCount: number
   pageSize: number
-  currentPage?: string
+  currentPage: number
 }
 
 const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
@@ -19,7 +19,6 @@ const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
   const searchParams = useSearchParams()
   const pageCount = Math.ceil(itemCount / pageSize)
   if (pageCount <= 1) return null
-  const page = currentPage ? parseInt(currentPage) : 1
   const changePage = (page: number) => {
     const params = new URLSearchParams(searchParams)
     params.set('page', page.toString())
@@ -33,7 +32,7 @@ const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
       <Button
         color="gray"
         variant="soft"
-        disabled={page === 1}
+        disabled={currentPage === 1}
         onClick={() => changePage(1)}
       >
         <DoubleArrowLeftIcon />
@@ -41,18 +40,18 @@ const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
       <Button
         color="gray"
         variant="soft"
-        disabled={page === 1}
-        onClick={() => changePage(page - 1)}
+        disabled={currentPage === 1}
+        onClick={() => changePage(currentPage - 1)}
       >
         <ChevronLeftIcon />
       </Button>
-      <Button color="gray" variant="soft" disabled={page === pageCount}>
-        <ChevronRightIcon onClick={() => changePage(page + 1)} />
+      <Button color="gray" variant="soft" disabled={currentPage === pageCount}>
+        <ChevronRightIcon onClick={() => changePage(currentPage + 1)} />
       </Button>
       <Button
         color="gray"
         variant="soft"
-        disabled={page === pageCount}
+        disabled={currentPage === pageCount}
         onClick={() => changePage(pageSize)}
       >
         <DoubleArrowRightIcon />
