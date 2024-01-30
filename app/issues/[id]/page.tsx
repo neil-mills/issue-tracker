@@ -7,7 +7,6 @@ import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/AuthOptions'
 import AssigneeSelect from './AssigneeSelect'
 import { prisma } from '@/prisma/client'
-import { Metadata } from 'next'
 import { cache } from 'react'
 
 interface Props {
